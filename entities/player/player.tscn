@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://d1rhepj3r0eil"]
+
+[ext_resource type="Script" uid="uid://3pohfsfwyc6n" path="res://entities/player/player.gd" id="1_symyc"]
+[ext_resource type="Script" uid="uid://b1idhue85eicq" path="res://entities/player/player_movement.gd" id="2_abrql"]
+[ext_resource type="Script" uid="uid://ckqb1mku0ir0d" path="res://components/hurtbox.gd" id="2_bls4j"]
+[ext_resource type="Texture2D" uid="uid://b3b4ftww1aaak" path="res://entities/player/sprites/male_hero_template-idle.png" id="2_qiwj3"]
+[ext_resource type="Script" uid="uid://dqcq2tr2x02co" path="res://components/hitbox.gd" id="3_fkugw"]
+[ext_resource type="Script" uid="uid://ch1dfrifnjexj" path="res://entities/player/player_combat.gd" id="3_sglur"]
+[ext_resource type="Script" uid="uid://rlvkdyksyrew" path="res://entities/player/player_animator.gd" id="4_bls4j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvh0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qiwj3")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1193976937]
+script = ExtResource("1_symyc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533288445]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1178633090]
+sprite_frames = SubResource("SpriteFrames_yvh0c")
+animation = &"idle"
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=1287207731]
+
+[node name="AttackDurationTimer" type="Timer" parent="." unique_id=190339211]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=781826947]
+script = ExtResource("2_bls4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=14590316]
+
+[node name="HitboxLeft" type="Area2D" parent="." unique_id=1768108443]
+monitoring = false
+script = ExtResource("3_fkugw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxLeft" unique_id=162376228]
+
+[node name="HitboxUp" type="Area2D" parent="." unique_id=1428166265]
+monitoring = false
+script = ExtResource("3_fkugw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxUp" unique_id=1676414464]
+
+[node name="HitboxDown" type="Area2D" parent="." unique_id=1403891401]
+monitoring = false
+script = ExtResource("3_fkugw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxDown" unique_id=423660424]
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=730136719]
+script = ExtResource("2_abrql")
+
+[node name="PlayerCombat" type="Node" parent="." unique_id=1461142771]
+script = ExtResource("3_sglur")
+
+[node name="PlayerAnimator" type="Node" parent="." unique_id=1689931687]
+script = ExtResource("4_bls4j")
