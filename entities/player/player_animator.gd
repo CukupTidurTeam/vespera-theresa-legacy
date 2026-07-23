@@ -19,7 +19,7 @@ func setup(anim_sprite: AnimatedSprite2D, owner_movement: PlayerMovement, owner_
 
 # Update the animation based on the player's movement and combat state, ensuring that attack animations take precedence over movement animations
 func _on_attack_started(attribute: int, _direction: int) -> void:
-	var anim := Constants.ANIM_ATTACK_LIGHT if attribute == Constants.AttributeType.LIGHT else Constants.ANIM_ATTACK_DARK
+	var anim: String = Constants.ANIM_ATTACK_LIGHT if attribute == Constants.AttributeType.LIGHT else Constants.ANIM_ATTACK_DARK
 	sprite.play(anim)
 	# TODO: kalau nanti tiap arah (kanan/kiri/atas/bawah) punya animasi
 	# berbeda, ganti baris di atas jadi lookup berdasar (attribute, direction).
