@@ -1,0 +1,201 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8keymappanel01"]
+
+[ext_resource type="Script" uid="uid://c8keymapsc001" path="res://scene/ui/key_map_panel.gd" id="1_keymap"]
+
+[node name="KeyMapPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(520, 380)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -190.0
+offset_right = 260.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_keymap")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "KEY MAP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyGrid" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/horizontal_separation = 12
+theme_override_constants/vertical_separation = 10
+columns = 4
+
+[node name="UpLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Up"
+
+[node name="UpKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ W ]"
+horizontal_alignment = 1
+
+[node name="LeftLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left"
+
+[node name="LeftKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ A ]"
+horizontal_alignment = 1
+
+[node name="DownLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Down"
+
+[node name="DownKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ S ]"
+horizontal_alignment = 1
+
+[node name="RightLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Right"
+
+[node name="RightKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ D ]"
+horizontal_alignment = 1
+
+[node name="JumpLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jump"
+
+[node name="JumpKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Space ]"
+horizontal_alignment = 1
+
+[node name="Attack1Label" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack 1"
+
+[node name="Attack1Key" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Left Click ]"
+horizontal_alignment = 1
+
+[node name="DashLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dash"
+
+[node name="DashKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Shift ]"
+horizontal_alignment = 1
+
+[node name="Attack2Label" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack 2"
+
+[node name="Attack2Key" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Right Click ]"
+horizontal_alignment = 1
+
+[node name="MapLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Map"
+
+[node name="MapKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Tab ]"
+horizontal_alignment = 1
+
+[node name="Skill1Label" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skill 1"
+
+[node name="Skill1Key" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ Q ]"
+horizontal_alignment = 1
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+
+[node name="InventoryKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ I ]"
+horizontal_alignment = 1
+
+[node name="Skill2Label" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skill 2"
+
+[node name="Skill2Key" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ E ]"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Information"
+
+[node name="InfoKey" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[ U ]"
+horizontal_alignment = 1
+
+[node name="EmptyLabel1" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+
+[node name="EmptyLabel2" type="Label" parent="MarginContainer/VBoxContainer/KeyGrid"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1rhepj3r0eil" path="res://entities/player/player.tscn" id="1_m637p"]
 [ext_resource type="Texture2D" uid="uid://37saayd1tivp" path="res://tileset/B&W tile set.png" id="2_od3m6"]
+[ext_resource type="PackedScene" uid="uid://c8pausemenuscene" path="res://scene/ui/pause_menu.tscn" id="3_pause"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_748nt"]
 texture = ExtResource("2_od3m6")
@@ -301,3 +302,6 @@ zoom = Vector2(3, 3)
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_pause")]
+
