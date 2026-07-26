@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8pausemenuscene"]
+
+[ext_resource type="Script" uid="uid://c8pausemenusc" path="res://scene/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="PackedScene" uid="uid://c8optionpanel001" path="res://scene/ui/option_panel.tscn" id="2_option"]
+[ext_resource type="PackedScene" uid="uid://c8keymappanel01" path="res://scene/ui/key_map_panel.tscn" id="3_keymap"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_pause")
+
+[node name="ColorRectOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="PauseButtonsContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -140.0
+offset_right = 160.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PauseTitleLabel" type="Label" parent="PauseButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME SCENE"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PauseButtonsContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Resume"
+
+[node name="OptionButton" type="Button" parent="PauseButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Option"
+
+[node name="QuitToMenuButton" type="Button" parent="PauseButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="OptionPanel" parent="." instance=ExtResource("2_option")]
+unique_name_in_owner = true
+visible = false
+
+[node name="KeyMapPanel" parent="." instance=ExtResource("3_keymap")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="pressed" from="PauseButtonsContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseButtonsContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="PauseButtonsContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="back_pressed" from="OptionPanel" to="." method="_on_option_panel_back_pressed"]
+[connection signal="key_map_pressed" from="OptionPanel" to="." method="_on_option_panel_key_map_pressed"]
+[connection signal="back_pressed" from="KeyMapPanel" to="." method="_on_key_map_panel_back_pressed"]

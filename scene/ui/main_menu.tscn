@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8mainmenuscene"]
+
+[ext_resource type="Script" uid="uid://c8mainmenusc" path="res://scene/ui/main_menu.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://c8saveslotpanel0" path="res://scene/ui/save_slot_panel.tscn" id="2_saveslot"]
+[ext_resource type="PackedScene" uid="uid://c8optionpanel001" path="res://scene/ui/option_panel.tscn" id="3_option"]
+[ext_resource type="PackedScene" uid="uid://c8keymappanel01" path="res://scene/ui/key_map_panel.tscn" id="4_keymap"]
+[ext_resource type="PackedScene" uid="uid://c8extraspanel001" path="res://scene/ui/extras_panel.tscn" id="5_extras"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.1, 1)
+
+[node name="MainButtonsContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -180.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MainButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "VESPERA"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="MainButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "MAIN MENU"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainButtonsContainer"]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="MainButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Start Game"
+
+[node name="OptionButton" type="Button" parent="MainButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Option"
+
+[node name="ExtrasButton" type="Button" parent="MainButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Extras"
+
+[node name="QuitGameButton" type="Button" parent="MainButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Quit Game"
+
+[node name="SaveSlotPanel" parent="." instance=ExtResource("2_saveslot")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="OptionPanel" parent="." instance=ExtResource("3_option")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="KeyMapPanel" parent="." instance=ExtResource("4_keymap")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ExtrasPanel" parent="." instance=ExtResource("5_extras")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MainButtonsContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/ExtrasButton" to="." method="_on_extras_button_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="back_pressed" from="SaveSlotPanel" to="." method="_on_save_slot_panel_back_pressed"]
+[connection signal="back_pressed" from="OptionPanel" to="." method="_on_option_panel_back_pressed"]
+[connection signal="key_map_pressed" from="OptionPanel" to="." method="_on_option_panel_key_map_pressed"]
+[connection signal="back_pressed" from="KeyMapPanel" to="." method="_on_key_map_panel_back_pressed"]
+[connection signal="back_pressed" from="ExtrasPanel" to="." method="_on_extras_panel_back_pressed"]
