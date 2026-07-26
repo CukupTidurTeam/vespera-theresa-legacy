@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1rhepj3r0eil" path="res://entities/player/player.tscn" id="1_m637p"]
 [ext_resource type="Texture2D" uid="uid://37saayd1tivp" path="res://tileset/B&W tile set.png" id="2_od3m6"]
+[ext_resource type="PackedScene" uid="uid://dtjgamyvus266" path="res://entities/zom/enemy.tscn" id="3_748nt"]
 [ext_resource type="PackedScene" uid="uid://c8pausemenuscene" path="res://scene/ui/pause_menu.tscn" id="3_pause"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_748nt"]
@@ -299,9 +300,14 @@ collision_mask = 6
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1140420486]
 position = Vector2(1, -22)
 zoom = Vector2(3, 3)
-limit_bottom = 150
+limit_left = -9999928
+limit_top = -10000038
+limit_right = 10000072
+limit_bottom = 112
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="Enemy" parent="." unique_id=1464719821 instance=ExtResource("3_748nt")]
+position = Vector2(260, 14)
 [node name="PauseMenu" parent="." instance=ExtResource("3_pause")]
 

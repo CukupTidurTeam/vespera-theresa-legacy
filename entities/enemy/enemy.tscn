@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://biqefaa8ghy1p"]
+
+[ext_resource type="Script" uid="uid://b3dmi7y25pgkc" path="res://entities/enemy/enemy.gd" id="1_ksmh7"]
+[ext_resource type="Script" uid="uid://ckqb1mku0ir0d" path="res://components/hurtbox.gd" id="2_im2q6"]
+[ext_resource type="Script" uid="uid://bpcl4viccqjw4" path="res://entities/enemy/enemy_movement.gd" id="3_3fvr7"]
+[ext_resource type="Script" uid="uid://by3bjfkmyvknh" path="res://entities/enemy/enemy_combat.gd" id="4_4wwj3"]
+[ext_resource type="Script" uid="uid://77csjh32x41r" path="res://entities/enemy/enemy_animator.gd" id="5_d50e0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0q3qa"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1464719821]
+script = ExtResource("1_ksmh7")
+metadata/_custom_type_script = "uid://b3dmi7y25pgkc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192078687]
+shape = SubResource("CapsuleShape2D_0q3qa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=769564355]
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=392075501]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=148900085]
+script = ExtResource("2_im2q6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=99607422]
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=258844132]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1071572340]
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=510143526]
+
+[node name="Range" type="CollisionShape2D" parent="AttackArea" unique_id=1607069841]
+
+[node name="Area2D" type="Area2D" parent="AttackArea" unique_id=1841838973]
+
+[node name="Hitbox" type="CollisionShape2D" parent="AttackArea/Area2D" unique_id=394673041]
+
+[node name="EnemyMovement" type="Node" parent="." unique_id=678075269]
+script = ExtResource("3_3fvr7")
+
+[node name="EnemyCombat" type="Node" parent="." unique_id=1178626745]
+script = ExtResource("4_4wwj3")
+
+[node name="EnemyAnimator" type="Node" parent="." unique_id=1307780311]
+script = ExtResource("5_d50e0")
+
+[node name="LedgeCheck" type="RayCast2D" parent="." unique_id=1409462179]
+collision_mask = 3
