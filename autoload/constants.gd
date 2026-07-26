@@ -16,6 +16,7 @@ const ANIM_DEATH := "death"
 const ANIM_ATTACK_LIGHT := "attack_light"
 const ANIM_ATTACK_DARK := "attack_dark"
 const ANIM_ATTACK := "attack"
+const ANIM_HURT := "hurt"
  
 # --- Attribute types (dipakai di combat, damage system nanti) ---
 enum AttributeType { LIGHT, DARK }

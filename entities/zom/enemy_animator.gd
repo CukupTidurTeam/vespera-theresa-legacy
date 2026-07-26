@@ -60,9 +60,7 @@ func update_animation() -> void:
 	if _is_attacking:
 		return
 
-	if not movement.body.is_on_floor():
-		sprite.play(Constants.ANIM_JUMP)
-	elif movement.is_moving_horizontally():
+	if movement.is_moving_horizontally():
 		sprite.play(Constants.ANIM_RUN)
 	else:
 		sprite.play(Constants.ANIM_IDLE)

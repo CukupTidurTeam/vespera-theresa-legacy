@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1rhepj3r0eil" path="res://entities/player/player.tscn" id="1_m637p"]
 [ext_resource type="Texture2D" uid="uid://37saayd1tivp" path="res://tileset/B&W tile set.png" id="2_od3m6"]
 [ext_resource type="PackedScene" uid="uid://dtjgamyvus266" path="res://entities/zom/enemy.tscn" id="3_748nt"]
-[ext_resource type="PackedScene" uid="uid://c8pausemenuscene" path="res://scene/ui/pause_menu.tscn" id="3_pause"]
+[ext_resource type="PackedScene" uid="uid://p6vlq0s2y2og" path="res://scene/ui/pause_menu.tscn" id="3_pause"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_748nt"]
 texture = ExtResource("2_od3m6")
@@ -291,7 +291,7 @@ sources/0 = SubResource("TileSetAtlasSource_748nt")
 [node name="Game" type="Node2D" unique_id=2020041910]
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=1901342622]
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAAHAAEAAAABAAAAAAAIAAEAAAABAAAAAAAJAAEAAAAFAAAAAAABAAIAAAABAAUAAAACAAIAAAABAAUAAAADAAIAAAABAAUAAAAEAAIAAAABAAUAAAAFAAIAAAABAAUAAAAGAAIAAAABAAUAAAAHAAIAAAABAAUAAAAIAAIAAAABAAUAAAAJAAIAAAAFAAUAAAAAAAIAAAAAAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAAHAAEAAAABAAAAAAAIAAEAAAABAAAAAAAJAAEAAAAFAAAAAAABAAIAAAABAAUAAAACAAIAAAABAAUAAAADAAIAAAABAAUAAAAEAAIAAAABAAUAAAAFAAIAAAABAAUAAAAGAAIAAAABAAUAAAAHAAIAAAABAAUAAAAIAAIAAAABAAUAAAAJAAIAAAAFAAUAAAAAAAIAAAAAAAUAAAD3////AAAAAAYAAAD4////AAABAAYAAAD5////AAACAAYAAAD6////AAADAAYAAAD7////AAAEAAYAAAD8////AAAFAAYAAAD8/wAAAAAFAAcAAAAQAP3/AAAFAAAAAAAQAP7/AAAFAAQAAAAMAP3/AAABAAAAAAANAP3/AAACAAAAAAAOAP3/AAADAAAAAAAPAP3/AAAEAAAAAAALAP7/AAAAAAEAAAALAP//AAAAAAUAAAALAP3/AAAAAAAAAAAMAP//AAABAAUAAAANAP//AAACAAUAAAAOAP//AAADAAUAAAAPAP//AAAEAAUAAAAQAP//AAAFAAUAAAAMAP7/AAABAAIAAAANAP7/AAABAAIAAAAOAP7/AAACAAIAAAAPAP7/AAADAAIAAAD3/wAAAAAAAAcAAAD4/wAAAAABAAcAAAD5/wAAAAACAAcAAAD6/wAAAAADAAcAAAD7/wAAAAAEAAcAAAA=")
 tile_set = SubResource("TileSet_m637p")
 
 [node name="Player" parent="." unique_id=1193976937 instance=ExtResource("1_m637p")]
@@ -308,6 +308,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Enemy" parent="." unique_id=1464719821 instance=ExtResource("3_748nt")]
-position = Vector2(260, 14)
-[node name="PauseMenu" parent="." instance=ExtResource("3_pause")]
+position = Vector2(138, -10)
 
+[node name="PauseMenu" parent="." unique_id=310370938 instance=ExtResource("3_pause")]

@@ -156,7 +156,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_je1fy")
 }],
 "loop": 1,
-"name": &"Attack",
+"name": &"attack",
 "speed": 8.0
 }, {
 "frames": [{
@@ -179,7 +179,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1c0y8")
 }],
 "loop": 1,
-"name": &"Dead",
+"name": &"death",
 "speed": 8.0
 }, {
 "frames": [{
@@ -202,7 +202,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cyxfr")
 }],
 "loop": 1,
-"name": &"Hurt",
+"name": &"hurt",
 "speed": 8.0
 }, {
 "frames": [{
@@ -225,7 +225,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cy71w")
 }],
 "loop": 1,
-"name": &"Idle",
+"name": &"idle",
 "speed": 8.0
 }, {
 "frames": [{
@@ -248,7 +248,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_x3ork")
 }],
 "loop": 1,
-"name": &"Walk",
+"name": &"run",
 "speed": 8.0
 }]
 
@@ -276,9 +276,8 @@ shape = SubResource("CapsuleShape2D_0q3qa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=769564355]
 sprite_frames = SubResource("SpriteFrames_hglnq")
-animation = &"Attack"
-autoplay = "Walk"
-frame_progress = 0.9717765
+animation = &"hurt"
+autoplay = "run"
 
 [node name="AttackCooldownTimer" type="Timer" parent="." unique_id=392075501]
 
