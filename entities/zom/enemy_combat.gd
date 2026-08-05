@@ -65,8 +65,10 @@ func _on_attack_area_entered(body: Node2D) -> void:
 	_can_attack = false
 	cooldown_timer.start()
 	attacked.emit()
-	attack_hitbox.damage = attack_damage
+	attack_hitbox.damage_same = attack_damage
+	attack_hitbox.damage_diff = attack_damage # sementara disamakan, belum ada sistem attribute Zombie sendiri
 	attack_hitbox.monitoring = true
+	print("ZOMBIE MENYERANG, hitbox monitoring: ", attack_hitbox.monitoring, " posisi hitbox: ", attack_hitbox.global_position)
 	# Hitbox dimatikan lagi oleh timer pendek — lihat catatan di
 	# EnemyCombat.setup jika ingin durasi aktif yang berbeda.
 	get_tree().create_timer(0.15).timeout.connect(func(): attack_hitbox.monitoring = false)

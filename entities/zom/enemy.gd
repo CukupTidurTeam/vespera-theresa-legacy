@@ -2,14 +2,13 @@ extends CharacterBody2D
 class_name ZombieEnemy
 
 ## ============================================================
-## ENEMY — Orchestrator tipis, sama filosofinya dengan Player.gd:
+## ZOMBIE ENEMY — Orchestrator tipis, sama filosofinya dengan Player.gd:
 ## cuma wiring component, semua logic ada di EnemyMovement /
 ## EnemyCombat / EnemyAnimator.
 ## ============================================================
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
-@onready var ledge_check: RayCast2D = $LedgeCheck
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_hitbox: Hitbox = $AttackArea/Hitbox
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
@@ -23,7 +22,7 @@ class_name ZombieEnemy
 func _ready() -> void:
 	add_to_group(Constants.GROUP_ENEMY)
 
-	movement.setup(self, ledge_check)
+	movement.setup(self)
 	combat.setup(movement, detection_area, attack_area, attack_hitbox, attack_cooldown_timer)
 	animator.setup(anim_sprite, movement, combat)
 
@@ -39,8 +38,24 @@ func _physics_process(delta: float) -> void:
 	animator.update_animation()
 
 
-func _on_hurt(amount: int, _attribute: int, _source: Node2D) -> void:
-	combat.take_damage(amount)
+## TODO (untuk yang mengerjakan Enemy 1/2, terpisah dari dual-bar
+## Player): Enemy sekarang masih pakai combat.take_damage(int) generik
+## dengan angka mentah dari Hurtbox — ini BELUM sesuai GDD (Enemy py
+## 1 bar attribute yang JADI HP-nya, dengan damage_same/damage_diff
+## dari Hitbox penyerang, bukan angka tetap). Untuk konsistensi
+## dengan pola PlayerAttributes (lihat entities/player/player_attributes.gd
+## sebagai referensi pola yang sudah dipakai), pertimbangkan bikin
+## EnemyAttribute component serupa: 1 bar, attribute tetap (Light
+## atau Dark, di-set lewat @export di Inspector per instance Enemy),
+## fungsi take_damage_from_hitbox(hitbox: Hitbox) yang panggil
+## hitbox.get_damage_for(my_attribute) untuk hitung damage yang benar.
+func _on_hurt(attacker_attribute: int, _source: Node2D, hitbox: Hitbox) -> void:
+	# FIX SEMENTARA: signature disesuaikan dengan Hurtbox versi baru
+	# (lihat components/hurtbox.gd) supaya tidak error saat testing
+	# Player, TAPI logic damage di bawah ini masih pakai pola lama
+	# (combat.take_damage sebagai int generik) — belum menghitung
+	# damage_same/damage_diff sesuai GDD. Ganti sesuai TODO di atas.
+	combat.take_damage(int(hitbox.damage_same))
 
 
 func _on_died() -> void:
