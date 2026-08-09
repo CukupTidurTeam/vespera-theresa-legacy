@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8saveslotpanel0"]
+[gd_scene format=3 uid="uid://b86n8la3u2bw6"]
 
-[ext_resource type="Script" uid="uid://c8saveslotsc001" path="res://scene/ui/save_slot_panel.gd" id="1_saveslot"]
+[ext_resource type="Script" uid="uid://mckmkxxgcxkq" path="res://scene/ui/save_slot_panel.gd" id="1_saveslot"]
 
-[node name="SaveSlotPanel" type="PanelContainer"]
+[node name="SaveSlotPanel" type="PanelContainer" unique_id=1819868842]
 custom_minimum_size = Vector2(460, 340)
 anchors_preset = 8
 anchor_left = 0.5
@@ -17,58 +17,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_saveslot")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=366390114]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1777608204]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=621130180]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SELECT SAVE SLOT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlotsVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SlotsVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=71565803]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Slot1Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox"]
+[node name="Slot1Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox" unique_id=441726990]
 layout_mode = 2
 size_flags_vertical = 3
 text = "1. [Last Save Data Name]  100%"
 
-[node name="Slot2Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox"]
+[node name="Slot2Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox" unique_id=853610846]
 layout_mode = 2
 size_flags_vertical = 3
 text = "2. [Last Save Data Name]  45%"
 
-[node name="Slot3Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox"]
+[node name="Slot3Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox" unique_id=957868799]
 layout_mode = 2
 size_flags_vertical = 3
 text = "3. [Last Save Data Name]  00%"
 
-[node name="Slot4Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox"]
+[node name="Slot4Button" type="Button" parent="MarginContainer/VBoxContainer/SlotsVBox" unique_id=175967306]
 layout_mode = 2
 size_flags_vertical = 3
 text = "4. [Last Save Data Name]  00%"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1974554005]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1820969557]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SlotsVBox/Slot1Button" to="." method="_on_slot_button_pressed" binds=[1]]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SlotsVBox/Slot2Button" to="." method="_on_slot_button_pressed" binds=[2]]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SlotsVBox/Slot3Button" to="." method="_on_slot_button_pressed" binds=[3]]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SlotsVBox/Slot4Button" to="." method="_on_slot_button_pressed" binds=[4]]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

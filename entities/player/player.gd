@@ -1,9 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-## ============================================================
-## PLAYER — Orchestrator tipis.
-## Semua LOGIC ada di component (PlayerMovement, PlayerCombat, PlayerAnimator, PlayerAttributes)
+## PLAYER - Node utama Player, menggabungkan movement, combat, animator, dan attributes. Dipanggil dari scene game saat Player spawn.
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
@@ -40,9 +38,22 @@ func _ready() -> void:
 	hurtbox.hurt.connect(_on_hurt)
 	attributes.died.connect(_on_died)
 
-	# Koneksi signal hitbox ke Player untuk mendeteksi serangan yang berhasil mendarat ke musuh.
+	# Koneksi signal landed() dari semua hitbox ke _on_hitbox_landed() supaya bisa regen bar attribute lawan saat Player kena musuh.
 	for hb: Hitbox in hitbox_dict.values():
 		hb.landed.connect(_on_hitbox_landed)
+
+	_apply_pending_load_if_any()
+	SaveManager.start_playtime_tracking()
+
+
+func _apply_pending_load_if_any() -> void:
+	# Kalau ada load-game pending, ambil data dari SaveManager dan restore posisi Player + bar attribute. Caller (SaveManager) WAJIB cek dulu apakah Player ada di scene tree sebelum panggil ini, karena ini cuma baca data dari PlayerAttributes.
+	var data := SaveManager.consume_pending_load()
+	if data.is_empty():
+		return
+
+	global_position = Vector2(data.get("position_x", global_position.x), data.get("position_y", global_position.y))
+	attributes.set_bars(data.get("light_bar", attributes.max_bar), data.get("dark_bar", attributes.max_bar))
 
 
 func _physics_process(delta: float) -> void:
@@ -53,17 +64,15 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hitbox_landed(hurtbox_hit: Hurtbox) -> void:
-	# Kalau Player berhasil menyerang musuh, regen bar attribute lawan sesuai GDD: Enemy Light -> +3 Dark bar Player, Enemy Dark -> +3 Light bar Player.
+	# Hanya regen bar attribute lawan kalau yang kena adalah musuh (bukan Player sendiri atau friendly NPC). Caller (Hitbox) WAJIB cek dulu apakah target valid sebelum emit landed() signal.
 	if hurtbox_hit.get_parent().is_in_group(Constants.GROUP_ENEMY):
 		var opposite := Constants.AttributeType.DARK if combat.get_current_attack_attribute() == Constants.AttributeType.LIGHT else Constants.AttributeType.LIGHT
 		attributes.regen(opposite, 3.0)
-		print("HIT ENEMY -> regen bar: ", opposite, " | Light: ", attributes.light_bar, " Dark: ", attributes.dark_bar)
 
 
 func _on_hurt(attacker_attribute: int, _source: Node2D, _hitbox: Hitbox) -> void:
-	# Attack musuh mengenai Player: kurangi bar attribute Player yang berlawanan dengan attribute musuh. Nilai damage sesuai GDD: Enemy Attack = 10.
 	attributes.take_damage_from_enemy(attacker_attribute, 10.0)
-	print("PLAYER KENA HIT dari attribute: ", attacker_attribute, " | Light: ", attributes.light_bar, " Dark: ", attributes.dark_bar)
+
 
 func _on_died() -> void:
 	died.emit()
