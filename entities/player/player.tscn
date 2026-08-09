@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dqcq2tr2x02co" path="res://components/hitbox.gd" id="3_fkugw"]
 [ext_resource type="Script" uid="uid://ch1dfrifnjexj" path="res://entities/player/player_combat.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://rlvkdyksyrew" path="res://entities/player/player_animator.gd" id="7_qiwj3"]
+[ext_resource type="Script" uid="uid://binrsggfbdvba" path="res://entities/player/player_attributes.gd" id="12_a1qjk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bls4j"]
 radius = 9.775
@@ -313,6 +314,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("3_fkugw")
+damage_same = 4.0
+damage_diff = 4.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxRight" unique_id=63956276]
 shape = SubResource("RectangleShape2D_bls4j")
@@ -323,6 +326,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("3_fkugw")
+damage_same = 4.0
+damage_diff = 4.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxLeft" unique_id=1734096154]
 shape = SubResource("RectangleShape2D_bls4j")
@@ -333,6 +338,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("3_fkugw")
+damage_same = 4.0
+damage_diff = 4.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxUp" unique_id=861362743]
 shape = SubResource("RectangleShape2D_bls4j")
@@ -343,6 +350,8 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("3_fkugw")
+damage_same = 4.0
+damage_diff = 4.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxDown" unique_id=271903718]
 shape = SubResource("RectangleShape2D_bls4j")
@@ -355,3 +364,6 @@ script = ExtResource("3_sglur")
 
 [node name="PlayerAnimator" type="Node" parent="." unique_id=252396903]
 script = ExtResource("7_qiwj3")
+
+[node name="PlayerAttributes" type="Node" parent="." unique_id=423107891]
+script = ExtResource("12_a1qjk")
